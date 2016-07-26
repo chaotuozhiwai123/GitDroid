@@ -12,11 +12,11 @@ import end.feicui.gitdroid.R;
  */
 public class pager0 extends FrameLayout {
     public pager0(Context context) {
-        super(context,null);
+        this(context, null);
     }
 
     public pager0(Context context, AttributeSet attrs) {
-        super(context, attrs,0);
+        this(context, attrs,0);
     }
 
     public pager0(Context context, AttributeSet attrs, int defStyleAttr) {
