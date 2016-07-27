@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import end.feicui.gitdroid.R;
+import end.feicui.gitdroid.splash.pager.pager2;
 import me.relex.circleindicator.CircleIndicator;
 
 /**
@@ -53,8 +54,8 @@ public class SplashPagerFragment extends Fragment {
         viewPager.setAdapter(adapter);
         indicator.setViewPager(viewPager);
         //添加ViewPager监听(为了动画)
-        viewPager.setOnPageChangeListener(pageColorListener);
-        viewPager.setOnPageChangeListener(phoneViewListener);
+        viewPager.addOnPageChangeListener(pageColorListener);
+        viewPager.addOnPageChangeListener(phoneViewListener);
     }
     //主要为了做背景颜色渐变处理
     private ViewPager.OnPageChangeListener pageColorListener=new ViewPager.OnPageChangeListener() {
@@ -93,7 +94,7 @@ public class SplashPagerFragment extends Fragment {
                 layoutPhone.setScaleX(scale);
                 layoutPhone.setScaleY(scale);
                 // 手机的平移处理
-                int scroll = (int) ((positionOffset - 1) * 360);
+                int scroll = (int) ((positionOffset - 1) * 100);
                 layoutPhone.setTranslationX(scroll);
                 // 手机字体的渐变
                 ivPhoneFont.setAlpha(positionOffset);
@@ -107,7 +108,11 @@ public class SplashPagerFragment extends Fragment {
 
         @Override
         public void onPageSelected(int position) {
-
+            // 当显示出最后一个pager时，播放它自己的动画
+            if (position == 2) {
+                pager2 pager2View = (pager2) adapter.getView(position);
+                pager2View.showAnimation();
+            }
         }
 
         @Override
