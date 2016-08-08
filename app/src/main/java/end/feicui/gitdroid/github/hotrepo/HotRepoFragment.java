@@ -1,4 +1,4 @@
-package end.feicui.gitdroid.hotrepo;
+package end.feicui.gitdroid.github.hotrepo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,7 +39,7 @@ public class HotRepoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        adapter = new HotRepoAdapter(getChildFragmentManager());
+        adapter = new HotRepoAdapter(getChildFragmentManager(),getContext());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
